@@ -36,9 +36,16 @@ namespace DReservation.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Reservation reservation)
         {
-            await _reservationService.PostAsync(reservation);
+            try
+            {
+                await _reservationService.PostAsync(reservation);
 
-            return Created("/", reservation);
+                return Created("/", reservation);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }
