@@ -1,5 +1,3 @@
-using System;
-
 namespace DReservation.Models
 {
     public class ErrorViewModel

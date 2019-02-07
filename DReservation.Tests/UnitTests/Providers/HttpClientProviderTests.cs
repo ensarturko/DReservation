@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using DReservation.Controllers;
 using DReservation.Providers;
 using DReservation.Providers.Implementations;
-using DReservation.Services;
-using Moq;
 using NUnit.Framework;
 
 namespace DReservation.Tests.UnitTests.Providers
