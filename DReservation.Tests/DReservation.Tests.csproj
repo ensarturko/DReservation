@@ -15,9 +15,4 @@
     <ProjectReference Include="..\DReservation\DReservation.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitTests\Services\" />
-    <Folder Include="UnitTests\Providers\" />
-  </ItemGroup>
-
 </Project>

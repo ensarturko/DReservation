@@ -20,9 +20,11 @@ namespace DReservation.Providers.Implementations
 
         public IHttpClientProvider GetClient(string url)
         {
-            var handler = new HttpClientHandler();
-            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
-            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => { return true; };
+            var handler = new HttpClientHandler
+            {
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            };
 
             _client = new HttpClient(handler) { BaseAddress = new Uri(url) };
 
@@ -33,7 +35,7 @@ namespace DReservation.Providers.Implementations
 
         public IHttpClientProvider ToBase64(string username, string password)
         {
-            var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password));
+            var byteArray = Encoding.ASCII.GetBytes($"{username}:{password}");
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
             return this;
