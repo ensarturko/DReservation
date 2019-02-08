@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DReservation", "DReservation\DReservation.csproj", "{7323331D-B279-4CD4-AB43-82608B085D19}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9211E838-D13F-4C1B-9427-026B8BB5955E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1E4EED9E-F8DA-4104-AB37-E7DA322EB2CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DReservation.Tests", "DReservation.Tests\DReservation.Tests.csproj", "{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DReservation.Tests", "DReservation.Tests\DReservation.Tests.csproj", "{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DReservation.UI", "DReservation.UI\DReservation.UI.csproj", "{52DF0143-A451-4BAB-A534-A8A5AFAE0111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DReservation", "DReservation\DReservation.csproj", "{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,21 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7323331D-B279-4CD4-AB43-82608B085D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7323331D-B279-4CD4-AB43-82608B085D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7323331D-B279-4CD4-AB43-82608B085D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7323331D-B279-4CD4-AB43-82608B085D19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E38ECAD-4E28-44BF-B7ED-6857F69E420A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52DF0143-A451-4BAB-A534-A8A5AFAE0111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52DF0143-A451-4BAB-A534-A8A5AFAE0111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52DF0143-A451-4BAB-A534-A8A5AFAE0111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52DF0143-A451-4BAB-A534-A8A5AFAE0111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7323331D-B279-4CD4-AB43-82608B085D19} = {9211E838-D13F-4C1B-9427-026B8BB5955E}
 		{8E38ECAD-4E28-44BF-B7ED-6857F69E420A} = {1E4EED9E-F8DA-4104-AB37-E7DA322EB2CD}
+		{52DF0143-A451-4BAB-A534-A8A5AFAE0111} = {9211E838-D13F-4C1B-9427-026B8BB5955E}
+		{5B6B3DD1-C72E-45E8-B6FA-F2F628AB622C} = {9211E838-D13F-4C1B-9427-026B8BB5955E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {212C5B43-5102-41AE-A2E1-DEB99873B234}

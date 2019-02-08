@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DReservation.Controllers;
 using DReservation.Models.Domain;
 using DReservation.Services;
+using DReservation.UI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
@@ -10,24 +10,24 @@ using NUnit.Framework;
 namespace DReservation.Tests.UnitTests.Controllers
 {
     [TestFixture]
-    public class ReservationControllerTests
+    public class ControllerTests
     {
         private Mock<IReservationService> _reservationServiceMock;
-        private ReservationController _controller;
+        private HomeController _controller;
 
         [SetUp]
         public void SetUp()
         {
             _reservationServiceMock = new Mock<IReservationService>();
 
-            _controller = new ReservationController(_reservationServiceMock.Object);
+            _controller = new HomeController(_reservationServiceMock.Object);
         }
 
         [Test]
         public async Task Get_Should_Catch_The_Exception_When_Date_Is_Empty()
         {
             // Act
-            var result = await _controller.Get(string.Empty);
+            var result = await _controller.GetAvailableTimes(string.Empty);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
@@ -37,7 +37,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Get_Should_Catch_The_Exception_When_Date_Is_Null()
         {
             // Act
-            var result = await _controller.Get(null);
+            var result = await _controller.GetAvailableTimes(null);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
@@ -51,7 +51,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Get_Should_Catch_The_Exception_When_StartingDate_IsNot_Valid(string startingDate)
         {
             // Act
-            var result = await _controller.Get(startingDate);
+            var result = await _controller.GetAvailableTimes(startingDate);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
@@ -62,7 +62,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Get_Should_ReturnOk_When_StartingDate_Is_Valid(string startDate)
         {
             // Act
-            var result = await _controller.Get(startDate);
+            var result = await _controller.GetAvailableTimes(startDate);
 
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);

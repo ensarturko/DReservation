@@ -1,0 +1,31 @@
+﻿@model StartingDateViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<br>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <form asp-controller="Home" asp-action="GetAvailableTimes">
+        <select asp-for="StartingDate" asp-items="Model.StartingDates"></select>
+        <br />
+        <br />
+        <button type="submit">Get Available Times</button>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>

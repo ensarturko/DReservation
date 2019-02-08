@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DReservation.UI\DReservation.UI.csproj" />
     <ProjectReference Include="..\DReservation\DReservation.csproj" />
   </ItemGroup>
 

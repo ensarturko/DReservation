@@ -1,4 +1,8 @@
-﻿namespace DReservation.Models.Domain
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace DReservation.Models.Domain
 {
     public class Schedule
     {
@@ -16,8 +20,14 @@
 
         public Slot Friday { get; set; }
 
-        public Slot Saturday { get; set; }
-
-        public Slot Sunday { get; set; }
+        [JsonIgnore]
+        public IDictionary<DayOfWeek, Slot> Days => new Dictionary<DayOfWeek, Slot>
+        {
+            [DayOfWeek.Monday] = Monday,
+            [DayOfWeek.Tuesday] = Tuesday,
+            [DayOfWeek.Wednesday] = Wednesday,
+            [DayOfWeek.Thursday] = Thursday,
+            [DayOfWeek.Friday] = Friday
+        };
     }
 }
