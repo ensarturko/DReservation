@@ -5,9 +5,9 @@
 ### How to use?
 
 - First clone repository in a folder.
-- If not installed, install .NET Core 2.1 or latest
+- If not installed, install .NET Core 2.1 or a higher version
 - Get in the folder like cd /home/root/application
-- You may need to type "dotnet restore"
+- Type "dotnet restore"
 - That's all.
 
 ### Application Project and Folder Structure
