@@ -72,7 +72,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Post_Should_Catch_The_Exception_When_Date_Is_Null()
         {
             // Act
-            var result = await _controller.Post(null);
+            var result = await _controller.DoFinalReservation(null);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
@@ -82,7 +82,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Post_Should_Catch_The_Exception_When_Parameter_Is_Empty_Inside()
         {
             // Act
-            var result = await _controller.Post(new Reservation());
+            var result = await _controller.DoFinalReservation(new Reservation());
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
@@ -92,7 +92,7 @@ namespace DReservation.Tests.UnitTests.Controllers
         public async Task Post_Should_Return_Ok_When_Parameter_Is_Valid()
         {
             // Act
-            var result = await _controller.Post(ValidReservation);
+            var result = await _controller.DoFinalReservation(ValidReservation);
 
             // Assert
             Assert.IsInstanceOf<CreatedResult>(result);

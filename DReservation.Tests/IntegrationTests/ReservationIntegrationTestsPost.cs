@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace DReservation.Tests.Integration
 {
     [TestFixture]
-    public class ReservationIntegrationTests_Post
+    public class ReservationIntegrationTestsPost
     {
         private readonly HttpClient _client;
 
@@ -19,7 +19,7 @@ namespace DReservation.Tests.Integration
 
         private const string InvalidSlot = "{ 'Start':'', 'End':'2017-06-13 12:00:00', 'Patient' : { 'Name' : '', 'SecondName' : 'Neta', 'Email' : 'mario@myspace.es' }, 'Comments':'my arm hurts a lot' } ";
 
-        public ReservationIntegrationTests_Post()
+        public ReservationIntegrationTestsPost()
         {
             // Arrange
             var server = new TestServer(new WebHostBuilder()

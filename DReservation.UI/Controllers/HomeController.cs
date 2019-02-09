@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
-using DReservation.Common;
 using DReservation.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using DReservation.UI.Models;
@@ -39,11 +37,12 @@ namespace DReservation.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DoReservation(DoReservationViewModel model)
+        public IActionResult DoReservation(DoReservationViewModel model)
         {
             var reservationViewModel = new ReservationViewModel
             {
-                Start = model.SelectedDay + model.StartDate, End = model.SelectedDay + model.EndDate
+                Start = model.SelectedDay + model.StartDate,
+                End = model.SelectedDay + model.EndDate
             };
 
             return View(reservationViewModel);
@@ -74,7 +73,7 @@ namespace DReservation.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DoReservation([FromForm] Reservation reservation)
+        public async Task<IActionResult> DoFinalReservation([FromForm] Reservation reservation)
         {
             try
             {

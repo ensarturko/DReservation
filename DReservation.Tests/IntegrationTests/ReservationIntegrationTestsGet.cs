@@ -12,11 +12,11 @@ using NUnit.Framework;
 namespace DReservation.Tests.IntegrationTests
 {
     [TestFixture]
-    public class ReservationIntegrationTests_Get
+    public class ReservationIntegrationTestsGet
     {
         private readonly HttpClient _client;
 
-        public ReservationIntegrationTests_Get()
+        public ReservationIntegrationTestsGet()
         {
             // Arrange
             var server = new TestServer(new WebHostBuilder()
@@ -28,10 +28,10 @@ namespace DReservation.Tests.IntegrationTests
         }
 
         [Test]
-        public async Task Get_Should_Return_BadRequest_When_Date_Is_Empty()
+        public async Task GetAvailability_Should_Return_BadRequest_When_Date_Is_Empty()
         {
             // Arrange
-            var response = await _client.GetAsync("/api/availability/week");
+            var response = await _client.GetAsync("/Home/GetAvailableTimes");
 
             // Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.BadRequest);
@@ -44,7 +44,7 @@ namespace DReservation.Tests.IntegrationTests
         public async Task Get_Should_Return_Bad_Request_When_Date_Is_Invalid(string invalidDateTime)
         {
             // Act
-            var response = await _client.GetAsync($"/api/availability/week/{invalidDateTime}");
+            var response = await _client.GetAsync($"/Home/GetAvailableTimes/{invalidDateTime}");
 
             // Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.BadRequest);
@@ -55,7 +55,7 @@ namespace DReservation.Tests.IntegrationTests
         public async Task Get_Should_Return_Bad_Request_When_Date_Is_Not_Monday(string startDate)
         {
             // Act
-            var response = await _client.GetAsync($"/api/availability/week/{startDate}");
+            var response = await _client.GetAsync($"/Home/GetAvailableTimes/{startDate}");
 
             // Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.BadRequest);
@@ -70,7 +70,7 @@ namespace DReservation.Tests.IntegrationTests
         public async Task Get_Should_Return_Ok_When_Date_Is_Valid(string startDate)
         {
             // Act
-            var response = await _client.GetAsync($"/api/availability/week/{startDate}");
+            var response = await _client.GetAsync($"/Home/GetAvailableTimes/{startDate}");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();

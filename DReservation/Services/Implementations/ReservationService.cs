@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Threading.Tasks;
-using DReservation.Common;
 using DReservation.Models.Domain;
 using DReservation.Providers;
 using DReservation.Settings;
