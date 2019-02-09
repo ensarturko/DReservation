@@ -4,6 +4,8 @@ namespace DReservation.Models.Domain
 {
     public class Reservation
     {
+        public Guid FacilityId { get; set; } = new Guid();
+
         public DateTime Start { get; set; }
 
         public DateTime End { get; set; }
