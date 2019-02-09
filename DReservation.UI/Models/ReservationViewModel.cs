@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DReservation.Models.Domain;
 
-namespace DReservation.Models.Domain
+namespace DReservation.UI.Models
 {
-    public class Reservation
+    public class ReservationViewModel
     {
         public DateTime Start { get; set; }
 

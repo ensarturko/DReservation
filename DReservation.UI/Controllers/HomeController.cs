@@ -38,12 +38,25 @@ namespace DReservation.UI.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DoReservation(DoReservationViewModel model)
+        {
+            var reservationViewModel = new ReservationViewModel
+            {
+                Start = model.SelectedDay + model.StartDate, End = model.SelectedDay + model.EndDate
+            };
+
+            return View(reservationViewModel);
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetAvailableTimes([FromForm]string startingDate)
         {
-            var viewModel = new List<GetAvailableDateItemViewModel>();
+            var viewModel = new GetAvailabilityViewModel();
 
             var dateTime = DateTime.ParseExact(startingDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            viewModel.SlotDurationMinutes = await _reservationService.GetSlotDurationMinutes(dateTime);
 
             foreach (var (date, times) in await _reservationService.GetWeekAvailability(dateTime))
             {
@@ -54,20 +67,20 @@ namespace DReservation.UI.Controllers
                     Times = times
                 };
 
-                viewModel.Add(item);
+                viewModel.GetAvailabilityDateItemViewModel.Add(item);
             }
 
-            return Ok(viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Reservation reservation)
+        public async Task<IActionResult> DoReservation([FromForm] Reservation reservation)
         {
             try
             {
                 await _reservationService.PostAsync(reservation);
 
-                return Created("/", reservation);
+                return View("Successful", reservation);
             }
             catch (Exception ex)
             {

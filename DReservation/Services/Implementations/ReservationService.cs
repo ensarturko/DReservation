@@ -40,7 +40,7 @@ namespace DReservation.Services.Implementations
             var result = new List<(DateTime, IDictionary<TimeSpan, bool>)>();
 
             var schedule = await GetAsync(startingDate);
-
+            
             var slotDurationMinutes = TimeSpan.FromMinutes(schedule.SlotDurationMinutes);
 
             for (var date = startingDate; date < startingDate.AddDays(5); date += TimeSpan.FromDays(1))
@@ -96,6 +96,13 @@ namespace DReservation.Services.Implementations
                 .GetClient(_settings.BaseUrl)
                 .ToBase64(_settings.Username, _settings.Password)
                 .PostAsync(_settings.PostRequestPath, reservationData);
+        }
+
+        public async Task<int> GetSlotDurationMinutes(DateTime startingDate)
+        {
+            var schedule = await GetAsync(startingDate);
+
+            return schedule.SlotDurationMinutes;
         }
     }
 }

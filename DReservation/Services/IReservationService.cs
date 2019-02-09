@@ -9,5 +9,6 @@ namespace DReservation.Services
     {
         Task<IList<(DateTime date, IDictionary<TimeSpan, bool> times)>> GetWeekAvailability(DateTime startingDate);
         Task PostAsync(Reservation reservationData);
+        Task<int> GetSlotDurationMinutes(DateTime startingDate);
     }
 }
