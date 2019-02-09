@@ -24,23 +24,37 @@ namespace DReservation.Tests.UnitTests.Controllers
         }
 
         [Test]
-        public async Task Get_Should_Catch_The_Exception_When_Date_Is_Empty()
+        public async Task GetAvailableTimes_Should_Throw_Exception_When_Date_Is_Empty()
         {
-            // Act
-            var result = await _controller.GetAvailableTimes(string.Empty);
+            try
+            {
+                // Act
+                var result = await _controller.GetAvailableTimes(string.Empty);
 
-            // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+                // Assert
+                Assert.Fail();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         [Test]
-        public async Task Get_Should_Catch_The_Exception_When_Date_Is_Null()
+        public async Task GetAvailableTimes_Should_Throw_Exception_When_Date_Is_Null()
         {
-            // Act
-            var result = await _controller.GetAvailableTimes(null);
+            try
+            {
+                // Act
+                var result = await _controller.GetAvailableTimes(null);
 
-            // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+                // Assert
+                Assert.Fail();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         [TestCase("ABCD")]
@@ -48,44 +62,40 @@ namespace DReservation.Tests.UnitTests.Controllers
         [TestCase("1236/18/32")]
         [TestCase("1236-18-32")]
         [TestCase("1")]
-        public async Task Get_Should_Catch_The_Exception_When_StartingDate_IsNot_Valid(string startingDate)
+        public async Task GetAvailableTimes_Should_Throw_Exception_When_StartingDate_IsNot_Valid(string startingDate)
         {
-            // Act
-            var result = await _controller.GetAvailableTimes(startingDate);
+            try
+            {
+                // Act
+                var result = await _controller.GetAvailableTimes(startingDate);
 
-            // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
-        }
-
-        [TestCase("20180312")]
-        [TestCase("20181015")]
-        public async Task Get_Should_ReturnOk_When_StartingDate_Is_Valid(string startDate)
-        {
-            // Act
-            var result = await _controller.GetAvailableTimes(startDate);
-
-            // Assert
-            Assert.IsInstanceOf<OkObjectResult>(result);
+                // Assert
+                Assert.Fail();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         [Test]
-        public async Task Post_Should_Catch_The_Exception_When_Date_Is_Null()
+        public async Task Post_Should_Return_ViewResult_When_Date_Is_Null()
         {
             // Act
             var result = await _controller.DoFinalReservation(null);
 
             // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
 
         [Test]
-        public async Task Post_Should_Catch_The_Exception_When_Parameter_Is_Empty_Inside()
+        public async Task Post_Should_Return_ViewResult_When_Parameter_Is_Empty_Inside()
         {
             // Act
             var result = await _controller.DoFinalReservation(new Reservation());
 
             // Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
 
         [Test]
@@ -95,7 +105,7 @@ namespace DReservation.Tests.UnitTests.Controllers
             var result = await _controller.DoFinalReservation(ValidReservation);
 
             // Assert
-            Assert.IsInstanceOf<CreatedResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
 
         public Reservation ValidReservation = new Reservation

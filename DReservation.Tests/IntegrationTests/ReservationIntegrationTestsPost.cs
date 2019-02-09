@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using NUnit.Framework;
 
-namespace DReservation.Tests.Integration
+namespace DReservation.Tests.IntegrationTests
 {
     [TestFixture]
     public class ReservationIntegrationTestsPost
@@ -34,7 +34,7 @@ namespace DReservation.Tests.Integration
         public async Task Post_Should_Return_Bad_Request_When_Parameter_Is_Null()
         {
             // Act
-            var response = await _client.PostAsync("/api/availability/takeslot", GetHttpContentFromJSON(string.Empty));
+            var response = await _client.PostAsync("/Home/DoFinalReservation", GetHttpContentFromJSON(string.Empty));
 
             // Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.BadRequest);
@@ -44,7 +44,7 @@ namespace DReservation.Tests.Integration
         public async Task Post_Should_Return_Bad_Request_When_Parameter_Has_Missing_Parts()
         {
             // Act
-            var response = await _client.PostAsync("/api/availability/takeslot", GetHttpContentFromJSON(InvalidSlot));
+            var response = await _client.PostAsync("/Home/DoFinalReservation", GetHttpContentFromJSON(InvalidSlot));
 
             // Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.BadRequest);
@@ -54,7 +54,7 @@ namespace DReservation.Tests.Integration
         public async Task Post_Should_Return_Ok_When_Parameter_Is_Valid()
         {
             // Act
-            var response = await _client.PostAsync("/api/availability/takeslot", GetHttpContentFromJSON(ValidSlot));
+            var response = await _client.PostAsync("/Home/DoFinalReservation", GetHttpContentFromJSON(ValidSlot));
             response.EnsureSuccessStatusCode();
 
             // Assert

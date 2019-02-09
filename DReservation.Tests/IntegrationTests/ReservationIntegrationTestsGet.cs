@@ -19,8 +19,7 @@ namespace DReservation.Tests.IntegrationTests
         public ReservationIntegrationTestsGet()
         {
             // Arrange
-            var server = new TestServer(new WebHostBuilder()
-                .UseStartup<Startup>());
+            var server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
 
             _client = server.CreateClient();
             _client.DefaultRequestHeaders.Clear();
